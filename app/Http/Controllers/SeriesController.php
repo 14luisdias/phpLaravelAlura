@@ -7,19 +7,23 @@ use Illuminate\Http\Request;
 class SeriesController extends Controller
 {
     
-    public function index(){
+    public function index(Request $request)
+    
+    {
+       //return  $request->get(key:'id');
+       //return redirect(to: 'https://google.com');
 
         $series = [
             'Punisher',
             'Lost',
             'Grey\'s Anatony'
-            ];
-            $html = '<ul>';
-                foreach ($series as $serie){
-                    $html .= "<li>$serie</li>";
-                }
-            $html .= '</ul>';
-            echo $html;
+        ];
 
+        return view('series.index',compact('series'));
+    }
+
+    public function create()
+    {
+        return view('series.create');
     }
 }
